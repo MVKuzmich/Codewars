@@ -3,6 +3,7 @@ package level_6;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Tasks6 {
@@ -94,6 +95,28 @@ public class Tasks6 {
         }
         return result.stream().mapToInt(Integer::intValue).toArray();
         // Implement me! :)
+    }
+
+    /*
+    Count the number of Duplicates
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that
+ occur more than once in the input string. The input string can be assumed to contain only alphabets
+  (both uppercase and lowercase) and numeric digits.
+     */
+    public int duplicateCount(String text) {
+        // Write your code here
+        int counter = 0;
+        List<String> distinct = Arrays.stream(text.toLowerCase().split("")).distinct().toList();
+        if(distinct.size() == text.length()) {
+            return 0;
+        } else {
+            for(String item : distinct) {
+                if(Arrays.stream(text.toLowerCase().split("")).filter(ch -> ch.equals(item)).toList().size() > 1) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
     }
 
 
