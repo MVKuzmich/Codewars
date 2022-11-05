@@ -107,11 +107,11 @@ Write a function that will return the count of distinct case-insensitive alphabe
         // Write your code here
         int counter = 0;
         List<String> distinct = Arrays.stream(text.toLowerCase().split("")).distinct().toList();
-        if(distinct.size() == text.length()) {
+        if (distinct.size() == text.length()) {
             return 0;
         } else {
-            for(String item : distinct) {
-                if(Arrays.stream(text.toLowerCase().split("")).filter(ch -> ch.equals(item)).toList().size() > 1) {
+            for (String item : distinct) {
+                if (Arrays.stream(text.toLowerCase().split("")).filter(ch -> ch.equals(item)).toList().size() > 1) {
                     counter++;
                 }
             }
@@ -119,5 +119,26 @@ Write a function that will return the count of distinct case-insensitive alphabe
         return counter;
     }
 
+    /*
+    Complete the method/function so that it converts dash/underscore delimited words into camel casing.
+    The first word within the output should be capitalized only if the original word was capitalized
+     (known as Upper Camel Case, also often referred to as Pascal case).
+    Examples
+    "the-stealth-warrior" gets converted to "theStealthWarrior"
+    "The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+     */
 
+    public String toCamelCase(String s) {
+        String[] items = s.split("[_-]");
+
+        return items[0].concat(IntStream.range(1, items.length)
+                .mapToObj(i -> {
+                    String[] letters = items[i].split("");
+                    if (Character.isLowerCase(letters[0].toCharArray()[0])) {
+                        letters[0] = String.valueOf(Character.toUpperCase(letters[0].toCharArray()[0]));
+                    }
+                    return String.join("", letters);
+                })
+                .collect(Collectors.joining("")));
+    }
 }
