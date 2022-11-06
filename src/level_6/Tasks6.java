@@ -1,8 +1,6 @@
 package level_6;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -144,7 +142,8 @@ Write a function that will return the count of distinct case-insensitive alphabe
 
     /*
     You are given an array (which will have a length of at least 3, but could be very large) containing integers.
-    The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
+    The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N.
+    Write a method that takes the array as an argument and returns this "outlier" N.
     Examples
     [2, 4, 0, 100, 4, 11, 2602, 36]
     Should return: 11 (the only odd number)
@@ -154,7 +153,7 @@ Write a function that will return the count of distinct case-insensitive alphabe
      */
     public int find(int[] integers) {
         int result = 0;
-        if(checkEven(integers)) {
+        if (checkEven(integers)) {
             result = Arrays.stream(integers).filter(i -> i % 2 != 0).findFirst().getAsInt();
         } else {
             result = Arrays.stream(integers).filter(i -> i % 2 == 0).findFirst().getAsInt();
@@ -166,13 +165,39 @@ Write a function that will return the count of distinct case-insensitive alphabe
     private boolean checkEven(int[] integers) {
         int countOdd = 0;
         int countEven = 0;
-        for(int i = 0; i < 3; i++) {
-            if(integers[i] % 2 == 0) {
+        for (int i = 0; i < 3; i++) {
+            if (integers[i] % 2 == 0) {
                 countEven++;
             } else {
                 countOdd++;
             }
         }
         return countEven > countOdd;
+    }
+
+    /*
+    The goal of this exercise is to convert a string to a new string where each character in the new string is "("
+     if that character appears only once in the original string,
+     or ")" if that character appears more than once in the original string.
+      Ignore capitalization when determining if a character is a duplicate.
+    Examples
+    "din"      =>  "((("
+    "recede"   =>  "()()()"
+    "Success"  =>  ")())())"
+    "(( @"     =>  "))(("
+     */
+    public String encode(String word) {
+        String example = word.toLowerCase();
+        HashMap<String, Integer> map = new HashMap<>();
+        String[] letters = example.split("");
+        for (String letter : letters) {
+            map.computeIfPresent(letter, (key, value) -> value + 1);
+            map.putIfAbsent(letter, 1);
+        }
+        String[] result = new String[letters.length];
+        for (int i = 0; i < letters.length; i++) {
+            result[i] = (map.get(letters[i]) == 1) ? "(" : ")";
+        }
+        return String.join("", result);
     }
 }
