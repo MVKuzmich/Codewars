@@ -200,4 +200,46 @@ Write a function that will return the count of distinct case-insensitive alphabe
         }
         return String.join("", result);
     }
+
+    /*
+    Your job is to write a function which increments a string, to create a new string.
+    If the string already ends with a number, the number should be incremented by 1.
+    If the string does not end with a number. the number 1 should be appended to the new string.
+    Examples:
+    foo -> foo1
+    foobar23 -> foobar24
+    foo0042 -> foo0043
+    foo9 -> foo10
+    foo099 -> foo100
+    Attention: If the number has leading zeros the amount of digits should be considered.
+     */
+    public String incrementString(String str) {
+        int startNumberIndex = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i))) {
+                startNumberIndex = i;
+                break;
+            }
+        }
+        String result = "";
+        if (startNumberIndex == 0) {
+            return (str.isBlank()) ? "1" : str.concat("1");
+        } else {
+            String letterPart = str.substring(0, startNumberIndex);
+            String numberPart = str.substring(startNumberIndex);
+            String number = Arrays.stream(numberPart.split(""))
+                    .map(Integer::parseInt)
+                    .filter(num -> num > 0)
+                    .map(String::valueOf)
+                    .collect(Collectors.joining());
+            if ((numberPart.length() == number.length())) {
+                result = letterPart.concat(String.valueOf(Integer.parseInt(number) + 1));
+            } else {
+                String formatPattern = "%0" + numberPart.length() + "d";
+                result = letterPart.concat(String.format(formatPattern, Integer.parseInt(number) + 1));
+            }
+        }
+        return result;
+    }
 }
+

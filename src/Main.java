@@ -18,8 +18,11 @@ public class Main {
 //        int[] arr = {2, 4, 0, 100, 4, 11, 2602, 36};
 //        System.out.println(new Tasks6().find(arr));
 
-        String word1 = "recede";
-        String word2 = "   ()(   ";
-        System.out.println(new Tasks6().encode(word1));
+//        String word1 = "recede";
+//        String word2 = "   ()(   ";
+//        System.out.println(new Tasks6().encode(word1));
+
+        String str = "";
+        System.out.println(new Tasks6().incrementString(str));
     }
 }
