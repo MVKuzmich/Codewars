@@ -1,3 +1,4 @@
+import level_5.Tasks5;
 import level_6.Tasks6;
 import level_7.Tasks7;
 
@@ -22,7 +23,10 @@ public class Main {
 //        String word2 = "   ()(   ";
 //        System.out.println(new Tasks6().encode(word1));
 
-        String str = "";
-        System.out.println(new Tasks6().incrementString(str));
+//        String str = "";
+//        System.out.println(new Tasks6().incrementString(str));
+
+        System.out.println(new Tasks5().rgb(255, 255, 255));
+        System.out.println(String.format("%02X%02X%02X", 255, 0, 0));
     }
 }
