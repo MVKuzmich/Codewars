@@ -22,6 +22,6 @@ public class Tasks5 {
                 array[i] = 0;
             }
         }
-        return String.format( String.format("%02X%02X%02X", array[0], array[1], array[2]));
+        return String.format("%02X%02X%02X", array[0], array[1], array[2]);
     }
 }
