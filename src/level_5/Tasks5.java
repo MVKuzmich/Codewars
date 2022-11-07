@@ -13,7 +13,6 @@ public class Tasks5 {
     RgbToHex.rgb(148, 0, 211)   // returns 9400D3
      */
     public String rgb(int r, int g, int b) {
-        StringBuilder builder = new StringBuilder();
         int[] array = {r, g, b};
         for(int i = 0; i < array.length; i++) {
             if(array[i] > 255) {
@@ -23,11 +22,6 @@ public class Tasks5 {
                 array[i] = 0;
             }
         }
-        for(int i : array) {
-            String hex = Integer.toHexString(i);
-            builder.append((hex.length() == 1) ? "0".concat(hex) : hex);
-        }
-
-        return builder.toString().toUpperCase();
+        return String.format( String.format("%02X%02X%02X", array[0], array[1], array[2]));
     }
 }
