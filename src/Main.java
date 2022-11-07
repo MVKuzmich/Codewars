@@ -26,7 +26,11 @@ public class Main {
 //        String str = "";
 //        System.out.println(new Tasks6().incrementString(str));
 
-        System.out.println(new Tasks5().rgb(255, 255, 255));
-        System.out.println(String.format("%02X%02X%02X", 255, 0, 0));
+//        System.out.println(new Tasks5().rgb(255, 255, 255));
+//        System.out.println(String.format("%02X%02X%02X", 255, 0, 0));
+
+        String[] arr = {"NORTH", "WEST", "SOUTH", "EAST"};
+        System.out.println(Arrays.toString(new Tasks5().dirReduc(arr)));
+
     }
 }
