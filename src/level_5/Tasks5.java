@@ -156,11 +156,5 @@ public class Tasks5 {
 
         return max;
     }
-    /*
-    For seconds = 62, your function should return
-    "1 minute and 2 seconds"
-    For seconds = 3662, your function should return
-    "1 hour, 1 minute and 2 seconds"
-     */
 
 }

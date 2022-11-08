@@ -1,3 +1,4 @@
+import level_4.Tasks4;
 import level_5.Tasks5;
 import level_6.Tasks6;
 import level_7.Tasks7;
@@ -32,8 +33,12 @@ public class Main {
 //        String[] arr = {"NORTH", "SOUTH", "NORTH", "WEST", "SOUTH", "EAST"};
 //        System.out.println(Arrays.toString(new Tasks5().dirReduc(arr)));
 
-        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-        System.out.println(new Tasks5().sequence1(a));
+//        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+//        System.out.println(new Tasks5().sequence1(a));
+
+        int sec = 245689780;
+        System.out.println(new Tasks4().formatDuration(sec));
+
 
     }
 }
