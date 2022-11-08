@@ -29,8 +29,11 @@ public class Main {
 //        System.out.println(new Tasks5().rgb(255, 255, 255));
 //        System.out.println(String.format("%02X%02X%02X", 255, 0, 0));
 
-        String[] arr = {"NORTH", "WEST", "SOUTH", "EAST"};
-        System.out.println(Arrays.toString(new Tasks5().dirReduc(arr)));
+//        String[] arr = {"NORTH", "SOUTH", "NORTH", "WEST", "SOUTH", "EAST"};
+//        System.out.println(Arrays.toString(new Tasks5().dirReduc(arr)));
+
+        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println(new Tasks5().sequence1(a));
 
     }
 }

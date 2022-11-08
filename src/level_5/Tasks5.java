@@ -1,7 +1,9 @@
 package level_5;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 import java.util.stream.IntStream;
 
 public class Tasks5 {
@@ -100,4 +102,65 @@ public class Tasks5 {
         }
         return buffer;
     }
+
+
+    /*
+    The maximum sum subarray problem consists in finding the maximum sum of a contiguous subsequence in an array or list of integers:
+    Max.sequence(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4});
+    // should be 6: {4, -1, 2, 1}
+    Easy case is when the list is made up of only positive numbers and the maximum sum is the sum of the whole array.
+    If the list is made up of only negative numbers, return 0 instead.
+
+    Empty list is considered to have zero greatest sum. Note that the empty list or array is also a valid sublist/subarray.
+     */
+    public int sequence(int[] arr) {
+        int maxSum = Integer.MIN_VALUE;
+        if (checkPositive(arr)) {
+            return IntStream.range(0, arr.length).map(item -> arr[item]).reduce(0, Integer::sum);
+        } else if (checkNegative(arr) || arr.length == 0) {
+            return 0;
+        } else {
+
+            for (int i = 0; i < arr.length; i++) {
+                int sum = 0;
+                sum += arr[i];
+                for (int j = i + 1; j < arr.length; j++) {
+                    sum += arr[j];
+                    if (sum > maxSum) {
+                        maxSum = sum;
+                    }
+                }
+            }
+        }
+        return maxSum;
+    }
+
+    private boolean checkPositive(int[] arr) {
+        return Arrays.stream(arr).filter(item -> item > 0).toArray().length == arr.length;
+    }
+
+    private boolean checkNegative(int[] arr) {
+        return Arrays.stream(arr).filter(item -> item < 0).toArray().length == arr.length;
+    }
+
+    public int sequence1(int[] arr) {
+
+        int sum = 0;
+        int max = 0;
+
+        for(int a : arr) {
+            sum += a;
+            max = Math.max(max, sum);
+            sum = Math.max(sum, 0);
+        }
+
+        return max;
+    }
+    /*
+    For seconds = 62, your function should return
+    "1 minute and 2 seconds"
+    For seconds = 3662, your function should return
+    "1 hour, 1 minute and 2 seconds"
+     */
+
 }
