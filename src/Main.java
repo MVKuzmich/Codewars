@@ -3,7 +3,10 @@ import level_5.Tasks5;
 import level_6.Tasks6;
 import level_7.Tasks7;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
 
@@ -36,8 +39,11 @@ public class Main {
 //        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 //        System.out.println(new Tasks5().sequence1(a));
 
-        int sec = 245689780;
-        System.out.println(new Tasks4().formatDuration(sec));
+//        int sec = 1245689780;
+//        System.out.println(new Tasks4().formatDuration(sec));
+
+        System.out.println(new Tasks4().sumStrings("","5"));
+
 
 
     }
