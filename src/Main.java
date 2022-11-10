@@ -42,7 +42,9 @@ public class Main {
 //        int sec = 1245689780;
 //        System.out.println(new Tasks4().formatDuration(sec));
 
-        System.out.println(new Tasks4().sumStrings("","5"));
+//        System.out.println(new Tasks4().sumStrings("","5"));
+
+        System.out.println(new Tasks4().stripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new String[] { "#", "!" }));
 
 
 

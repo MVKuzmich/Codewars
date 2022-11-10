@@ -98,5 +98,44 @@ public class Tasks4 {
         }
         return str;
     }
+
+    /*
+    Complete the solution so that it strips all text that follows any of a set of comment markers passed in.
+     Any whitespace at the end of the line should also be stripped out.
+     var result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])
+    result should == "apples, pears\ngrapes\nbananas"
+     */
+
+    public String stripComments(String text, String[] commentSymbols) {
+        List<String> textParts = Arrays.stream(text.split("\n")).map(item -> trimEndSpaces(item)).collect(Collectors.toList());
+        if (Arrays.stream(commentSymbols).anyMatch(text::contains)) {
+            for (int j = 0; j < textParts.size(); j++) {
+                for (int i = 0; i < commentSymbols.length; i++) {
+                    if (textParts.get(j).contains(commentSymbols[i])) {
+                        String input = textParts.get(j);
+                        input = trimEndSpaces(input.substring(0, input.indexOf(commentSymbols[i])));
+                        textParts.set(j, input);
+                        break;
+                    }
+
+                }
+            }
+        }
+        return String.join("\n", textParts);
+    }
+
+    public String trimEndSpaces(String str) {
+        if(str.isBlank()) {
+            return "";
+        }
+        if(str.matches(".+\\s+$")) {
+            for(int i = str.length() - 1; i >= 0; i--) {
+                if(!Character.isSpaceChar(str.charAt(i))) {
+                    return str.substring(0, i + 1);
+                }
+            }
+        }
+        return str;
+    }
 }
 
