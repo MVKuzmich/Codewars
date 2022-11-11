@@ -44,7 +44,9 @@ public class Main {
 
 //        System.out.println(new Tasks4().sumStrings("","5"));
 
-        System.out.println(new Tasks4().stripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new String[] { "#", "!" }));
+//        System.out.println(new Tasks4().stripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new String[] { "#", "!" }));
+
+        System.out.println(new Tasks6().countPairsInt(6, 1000));
 
 
 

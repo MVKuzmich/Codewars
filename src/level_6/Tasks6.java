@@ -241,5 +241,38 @@ Write a function that will return the count of distinct case-insensitive alphabe
         }
         return result;
     }
+    /*
+    The integers 14 and 15, are contiguous (1 the difference between them, obvious) and have the same number of divisors.
+14 ----> 1, 2, 7, 14 (4 divisors)
+15 ----> 1, 3, 5, 15 (4 divisors)
+     */
+
+    public int countPairsInt(int diff, long nMax) {
+        List<Integer[]> list = new ArrayList<>();
+        int countPair = 0;
+        int i = 1;
+        while (i + diff < nMax) {
+            int one = countDivisor(i);
+            int two = countDivisor(i + diff);
+            if (one == two) {
+                list.add(new Integer[]{i, i + diff});
+                countPair++;
+            }
+            i++;
+        }
+        // your code
+        list.forEach(item -> System.out.print(Arrays.toString(item)));
+        return countPair;
+    }
+
+    public int countDivisor(int num) {
+        int count = 0;
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
 
